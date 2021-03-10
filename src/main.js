@@ -10,12 +10,24 @@ const store = createStore({
     };
   },
   // Put all the logic in store rather than in components
+  // Mutations must be synchronous  
   mutations: {
     increment(state) {
       state.counter++;
     },
     increase(state, playload) {
       state.counter = state.counter + playload.value;
+    }
+  },
+  // Actions allow to have asynchronous code
+  actions: {
+    increment(context) {
+      setTimeout(function() {
+        context.commit('increment');
+      }, 2000);
+    },
+    increase(context, playload) {
+      context.commit('increase', playload);
     }
   },
   getters: {
