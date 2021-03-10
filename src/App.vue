@@ -1,20 +1,26 @@
 <template>
-  <base-container title="Vuex">
+  <base-container title="Vuex" v-if="loggedIn">
     <the-counter></the-counter>
     <button @click="increment">Add 1</button>
     <button @click="increase({value: 10})">Add 10</button>
+  </base-container>
+  <base-container title="Auth">
+    <user-auth></user-auth>
   </base-container>
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter.vue';
+import UserAuth from './components/UserAuth.vue';
 import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
     BaseContainer,
-    TheCounter
+    TheCounter,
+    UserAuth
   },
   methods: {
     ...mapActions(['increment', 'increase'])
@@ -22,7 +28,8 @@ export default {
   computed: {
     counter() {
       return this.$store.state.counter;
-    }
+    },
+    ...mapGetters(['loggedIn'])
   }
 };
 </script>
