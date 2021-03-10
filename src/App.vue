@@ -1,6 +1,6 @@
 <template>
   <base-container title="Vuex">
-    <h3>{{ counter }}</h3>
+    <the-counter></the-counter>
     <button @click="addOne">Add 1</button>
     <button @click="increment">Add 10</button>
   </base-container>
@@ -8,10 +8,12 @@
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
+import TheCounter from './components/TheCounter.vue';
 
 export default {
   components: {
     BaseContainer,
+    TheCounter
   },
   methods: {
     addOne() {
