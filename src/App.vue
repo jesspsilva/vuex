@@ -26,9 +26,6 @@ export default {
     ...mapActions(['increment', 'increase'])
   },
   computed: {
-    counter() {
-      return this.$store.state.counter;
-    },
     ...mapGetters(['loggedIn'])
   }
 };
